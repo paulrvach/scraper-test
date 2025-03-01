@@ -25,8 +25,11 @@ const RowComponent = ({
           </div>
         </div>
         <Image
-          src={images[0].src!}
-          alt={images[0].text!}
+          src={
+            images![0].src! ||
+            "https://images.squarespace-cdn.com/content/v1/61e1cfe1ea03b70d69145845/4a2f988a-4759-416c-9fc8-1e9f8f4a87bc/Iris-Logo-RGB-color-rect_for_GHL.jpg?format=1500w"
+          }
+          alt={images![0].text!}
           width={1080}
           height={1080}
           className="rounded-xl"

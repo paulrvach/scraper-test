@@ -26,7 +26,7 @@ const DataDistributor = ({ data }: PropsDataDistributor) => {
     (data.images?.length == 1 && data.text)
   ) {
     return <ImageWithText data={data} />;
-  } else if (data.images?.length > 1) {
+  } else if (data.images && data.images?.length > 1) {
     return <ImageGallery data={data} />;
   } else if (data.images?.length === 1) {
     return <SingleImage data={data} />;

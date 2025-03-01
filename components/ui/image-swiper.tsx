@@ -6,13 +6,10 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { PropsDataDistributor } from "@/app/[...productLine]/components/data-distributor";
 
-interface ImageSwiperProps extends React.HTMLAttributes<HTMLDivElement> {
-  images: {
-    src?: string;
-    text: string | undefined;
-  }[];
-}
+type ImageSwiperProps = PropsDataDistributor["data"] &
+  React.ComponentProps<"div">;
 
 export function ImageSwiper({ images, className, ...props }: ImageSwiperProps) {
   const [imgIndex, setImgIndex] = React.useState(0);
@@ -20,7 +17,7 @@ export function ImageSwiper({ images, className, ...props }: ImageSwiperProps) {
 
   const onDragEnd = () => {
     const x = dragX.get();
-    if (x <= -10 && imgIndex < images.length - 1) {
+    if (images && x <= -10 && imgIndex < images.length - 1) {
       setImgIndex((prev) => prev + 1);
     } else if (x >= 10 && imgIndex > 0) {
       setImgIndex((prev) => prev - 1);
@@ -49,7 +46,7 @@ export function ImageSwiper({ images, className, ...props }: ImageSwiperProps) {
           </div>
         )}
 
-        {imgIndex < images.length - 1 && (
+        {images && imgIndex < images.length - 1 && (
           <div className="absolute right-5 top-1/2 -translate-y-1/2">
             <Button
               variant="ghost"
@@ -64,7 +61,7 @@ export function ImageSwiper({ images, className, ...props }: ImageSwiperProps) {
 
         <div className="absolute bottom-2 w-full flex justify-center">
           <div className="flex min-w-9 items-center justify-center rounded-md bg-black/80 px-2 py-0.5 text-xs text-white opacity-0 transition-opacity group-hover:opacity-100">
-            {imgIndex + 1}/{images.length}
+            {imgIndex + 1}/{images?.length}
           </div>
         </div>
       </div>
@@ -91,20 +88,21 @@ export function ImageSwiper({ images, className, ...props }: ImageSwiperProps) {
         }}
         className=" flex h-full cursor-grab items-center rounded-[inherit] active:cursor-grabbing"
       >
-        {images.map((src, i) => {
-          return (
-            <motion.div
-              key={i}
-              className="h-full w-full shrink-0 overflow-hidden bg-neutral-800 object-cover first:rounded-l-[inherit] last:rounded-r-[inherit]"
-            >
-              <img
-                src={src.src}
-                className="pointer-events-none h-full w-full object-cover"
-                alt="cover"
-              />
-            </motion.div>
-          );
-        })}
+        {images &&
+          images.map((src, i) => {
+            return (
+              <motion.div
+                key={i}
+                className="h-full w-full shrink-0 overflow-hidden bg-neutral-800 object-cover first:rounded-l-[inherit] last:rounded-r-[inherit]"
+              >
+                <img
+                  src={src.src}
+                  className="pointer-events-none h-full w-full object-cover"
+                  alt="cover"
+                />
+              </motion.div>
+            );
+          })}
       </motion.div>
     </div>
   );

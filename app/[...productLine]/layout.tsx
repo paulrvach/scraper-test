@@ -1,15 +1,15 @@
 import React from "react";
 import { URL } from "@/lib/utils";
 import { DataProvider } from "../context/scraped-data-context";
+import { LayoutProps } from "@/.next/types/app/layout";
 
 type Props = {
-  params: Promise<{ productLine: string[] }>;
-} & React.ComponentProps<"div">;
+  params: { productLine: string[] };
+  children: React.ReactNode;
+} & LayoutProps
 
-const Layout = async ({ params, children }: Props) => {
-  const { productLine } = await params;
+export default async function Layout({ params, children }: Props) {
+  const { productLine } = params;
   const url = `${URL}${productLine.join("/")}`;
   return <DataProvider url={url}>{children}</DataProvider>;
-};
-
-export default Layout;
+}

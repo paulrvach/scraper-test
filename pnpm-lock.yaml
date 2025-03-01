@@ -64,6 +64,9 @@ devDependencies:
   '@eslint/eslintrc':
     specifier: ^3
     version: 3.2.0
+  '@types/cheerio':
+    specifier: ^0.22.35
+    version: 0.22.35
   '@types/node':
     specifier: ^20
     version: 20.17.14
@@ -868,6 +871,12 @@ packages:
     dependencies:
       tslib: 2.8.1
     dev: false
+
+  /@types/cheerio@0.22.35:
+    resolution: {integrity: sha512-yD57BchKRvTV+JD53UZ6PD8KWY5g5rvvMLRnZR3EQBCZXiDT/HR+pKpMzFGlWNhFrXlo7VPZXtKvIEwZkAWOIA==}
+    dependencies:
+      '@types/node': 20.17.14
+    dev: true
 
   /@types/estree@1.0.6:
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}

@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import * as cheerio from "cheerio";
-
 interface TableRow {
   [key: string]: string;
 }
@@ -19,7 +18,7 @@ export interface ContentBlock {
   src?: string;
   iframe?: string;
   tables?: TableRow[][];
-  images: { src?: string; text: string | undefined }[];
+  images?: { src?: string; text: string | undefined }[];
 }
 
 export async function POST(request: NextRequest) {
@@ -53,7 +52,6 @@ async function scrapePageContent(url: string): Promise<ContentBlock[]> {
           const parsedContentBlock = parseElement($element, $);
           contentBlocks.push(parsedContentBlock);
         });
-        console.log(contentBlocks);
         // Merge text-image blocks:
         for (let i = 0; i < contentBlocks.length - 1; i++) {
           const currentBlock = contentBlocks[i];
@@ -94,7 +92,7 @@ async function scrapePageContent(url: string): Promise<ContentBlock[]> {
 
         if (concatedImageAndTextBlocks.length > 0)
           contentBlocks.push({ images: concatedImageAndTextBlocks });
-        
+
         console.log(contentBlocks);
       }
       if (row.length > 0) {
@@ -129,8 +127,8 @@ async function scrapePageContent(url: string): Promise<ContentBlock[]> {
 }
 
 function parseElement(
-  element: cheerio.Cheerio<AnyNode>,
-  $: cheerio.CheerioAPI
+  element: cheerio.Cheerio,
+  $: cheerio.Root
 ): ContentBlock {
   const contentBlock: ContentBlock = {};
   const list = element.find("li");
@@ -208,8 +206,8 @@ function removeSpace(string: string): string {
 }
 
 function scrapeTables(
-  table: cheerio.Cheerio<AnyNode>,
-  $: cheerio.CheerioAPI
+  table: cheerio.Cheerio,
+  $: cheerio.Root
 ): TableRow[][] {
   const tables: TableRow[][] = [];
 
