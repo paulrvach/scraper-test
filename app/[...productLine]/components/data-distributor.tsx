@@ -19,7 +19,7 @@ const DataDistributor = ({ data }: PropsDataDistributor) => {
     return <ListComponent data={data} />;
   } else if (data.headings?.h3 && data.images && data.items) {
     return <RowComponent data={data} />;
-  } else if (data.headings?.h3 && data.images == null) {
+  } else if (data.headings?.h3 && data.images == null || data.text) {
     return <H3 data={data} />;
   } else if (
     (data.headings?.h4 && data.images?.length === 1) ||

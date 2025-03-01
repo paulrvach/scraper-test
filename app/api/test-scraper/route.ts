@@ -74,6 +74,27 @@ async function scrapePageContent(url: string): Promise<ContentBlock[]> {
             i--; // Decrement i to re-examine current index after removal
           }
         }
+        const concatedImageAndTextBlocks = [];
+        for (let i = 0; i < contentBlocks.length - 1; i++) {
+          const currentBlock = contentBlocks[i];
+
+          if (
+            currentBlock.text &&
+            currentBlock.images &&
+            Object.keys(currentBlock).length === 2
+          ) {
+            concatedImageAndTextBlocks.push({
+              src: currentBlock.images[0].src,
+              text: currentBlock.text,
+            });
+            contentBlocks.splice(i, 1);
+            i--;
+          }
+        }
+
+        if (concatedImageAndTextBlocks.length > 0)
+          contentBlocks.push({ images: concatedImageAndTextBlocks });
+        
         console.log(contentBlocks);
       }
       if (row.length > 0) {

@@ -5,7 +5,7 @@ const MainSection = ({
   data: { headings, src, images, items },
 }: PropsDataDistributor) => {
   return (
-    <div className="text-left text-primary max-w-3xl flex flex-col gap-4 mt-16">
+    <div className="text-left text-primary max-w-3xl flex flex-col gap-4 ">
       {headings?.h1 && (
         <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
           {headings.h1}

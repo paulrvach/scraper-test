@@ -51,13 +51,27 @@ const NavBar = () => {
     loadNavItems();
   }, []);
   return (
-    <div className="sticky top-0 z-50 flex w-full items-center justify-between pt-4   backdrop-blur-[1px]">
-      <div className="flex-1 min-w-0">
-        <div className="max-w-fit">
+    <div className="sticky top-0 z-50 w-full pt-4  backdrop-blur-[1px]">
+      <div className="flex w-full items-center justify-between px-4">
+        <div className="mx-4 mix-blend-multiply bg-accent ">
+          <Link href={"/"}>
+            <Image
+              src="https://images.squarespace-cdn.com/content/v1/61e1cfe1ea03b70d69145845/4a2f988a-4759-416c-9fc8-1e9f8f4a87bc/Iris-Logo-RGB-color-rect_for_GHL.jpg?format=1500w"
+              alt="Iris Technology"
+              className="block w-28  mix-blend-multiply"
+              loading="eager"
+              decoding="async"
+              data-loader="raw"
+              width={700}
+              height={360}
+            />
+          </Link>
+        </div>
+        <div className="  ">
           <NavigationMenu>
             <NavigationMenuList>
               {!loading &&
-                navItems.map((item, index) => {
+                navItems?.map((item, index) => {
                   if ("folder" in item) {
                     // Render NavMenu.Item for folders
                     return (
@@ -66,7 +80,7 @@ const NavBar = () => {
                           {item.folder}
                         </NavigationMenuTrigger>
                         <NavigationMenuContent>
-                          <ScrollArea className="h-72">
+                          <ScrollArea className="h-64">
                             {item.items.map((menuItem, menuItemIndex) => {
                               if (menuItem.href.includes("#")) {
                                 return (
@@ -113,24 +127,6 @@ const NavBar = () => {
             </NavigationMenuList>
           </NavigationMenu>
         </div>
-      </div>
-      <div className="mx-4 mix-blend-multiply bg-accent">
-        <Link href={"/"}>
-          <Image
-            src="https://images.squarespace-cdn.com/content/v1/61e1cfe1ea03b70d69145845/4a2f988a-4759-416c-9fc8-1e9f8f4a87bc/Iris-Logo-RGB-color-rect_for_GHL.jpg?format=1500w"
-            alt="Iris Technology"
-            className="block w-28  mix-blend-multiply"
-            loading="eager"
-            decoding="async"
-            data-loader="raw"
-            width={700}
-            height={360}
-          />
-        </Link>
-      </div>
-      <div className="flex flex-1 justify-end gap-2">
-        <Button variant={"ghost"}>ABOUT</Button>
-        <Button>CONTACT</Button>
       </div>
     </div>
   );

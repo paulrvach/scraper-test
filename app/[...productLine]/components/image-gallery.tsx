@@ -1,6 +1,6 @@
 import React from "react";
 import { PropsDataDistributor } from "./data-distributor";
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ImageSwiper } from "@/components/ui/image-swiper";
 const ImageGallery = ({
   data: { headings, src, images, items, text },
@@ -10,7 +10,7 @@ const ImageGallery = ({
       <CardContent className="p-0">
         <ImageSwiper images={images} />
       </CardContent>
-        
+      {text && <CardHeader>{text}</CardHeader>}
     </Card>
   );
 };
