@@ -1,6 +1,5 @@
 "use client";
 import HeroSection from "./home-page-components/hero-section";
-import ListCard from "./[...productLine]/components/list-card";
 import ScrollingBanner from "./home-page-components/marquee";
 import NavCards from "./home-page-components/nav-cards";
 

@@ -3,10 +3,8 @@ import { Badge } from "@/components/ui/badge";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import Link from "next/link";
 
@@ -19,9 +17,8 @@ import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { BorderBeam } from "@/components/ui/border-beam";
 
-type Props = {};
 
-const NavCards = (props: Props) => {
+const NavCards = () => {
   const [isHovering, setIsHovering] = useState<"aerospace" | "tactical" | null>(
     null
   );

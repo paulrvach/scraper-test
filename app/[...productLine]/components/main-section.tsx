@@ -1,9 +1,7 @@
 import React from "react";
 import { PropsDataDistributor } from "./data-distributor";
 
-const MainSection = ({
-  data: { headings, src, images, items },
-}: PropsDataDistributor) => {
+const MainSection = ({ data: { headings, items } }: PropsDataDistributor) => {
   return (
     <div className="text-left text-primary max-w-3xl flex flex-col gap-4 ">
       {headings?.h1 && (

@@ -105,10 +105,3 @@ export const exampleDOMObject = [
   ]
 ]
 
-const arr = [
-  new Set(["h1", "h3", "p"]),
-  new Set(["h3", "img", "p"]),
-  new Set(["h3", "img", "p"]),
-  new Set(["img2", "p"]),
-];
-

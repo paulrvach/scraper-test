@@ -1,9 +1,7 @@
 import React from "react";
 import { PropsDataDistributor } from "./data-distributor";
 import Image from "next/image";
-const SingleImage = ({
-  data: { headings, src, images, items },
-}: PropsDataDistributor) => {
+const SingleImage = ({ data: { images } }: PropsDataDistributor) => {
   return (
     <div className="max-w-md">
       {images ? (

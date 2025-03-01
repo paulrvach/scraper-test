@@ -1,6 +1,5 @@
 import React from "react";
 import { HeroPill } from "./hero-pill";
-import { Plus } from "lucide-react";
 import { DotPattern } from "@/components/ui/dot-pattern";
 import { TextAnimate } from "@/components/ui/text-animate";
 import { cn } from "@/lib/utils";

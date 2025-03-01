@@ -100,6 +100,7 @@ export function ImageSwiper({ images, className, ...props }: ImageSwiperProps) {
               <img
                 src={src.src}
                 className="pointer-events-none h-full w-full object-cover"
+                alt="cover"
               />
             </motion.div>
           );

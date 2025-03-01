@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 
 const RowComponent = ({
-  data: { headings, src, images, items },
+  data: { headings, images, items },
 }: PropsDataDistributor) => {
   return (
     <section className="py-32 ">
@@ -23,15 +23,14 @@ const RowComponent = ({
               </p>
             ))}
           </div>
-
         </div>
-          <Image
-            src={images[0].src!}
-            alt={images[0].text!}
-            width={1080}
-            height={1080}
-            className="rounded-xl"
-          />
+        <Image
+          src={images[0].src!}
+          alt={images[0].text!}
+          width={1080}
+          height={1080}
+          className="rounded-xl"
+        />
       </div>
     </section>
   );

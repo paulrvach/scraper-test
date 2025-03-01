@@ -29,7 +29,6 @@ export async function GET() {
         // Handle folder items (dropdowns)
         const folderTitleElement = $navItem.find("a.header-nav-folder-title");
         const folderName = folderTitleElement.text().trim();
-        const folderHref = folderTitleElement.attr("href") || ""; // Folder href if needed
 
         const folderItems: NavItem[] = [];
         $navItem

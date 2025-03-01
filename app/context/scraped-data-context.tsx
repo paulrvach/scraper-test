@@ -9,7 +9,7 @@ interface DataContextProps {
 }
 
 interface DataContextValue {
-  data: ContentBlock[] | null;
+  data: { data: ContentBlock[] } | null;
   isLoading: boolean;
   error: Error | null;
   setUrl: (url: string | null) => void;
@@ -17,11 +17,8 @@ interface DataContextValue {
 
 const DataContext = createContext<DataContextValue | undefined>(undefined);
 
-export function DataProvider({
-  url: initialUrl,
-  children,
-}: DataContextProps) {
-  const [data, setData] = useState<ContentBlock[] | null>(null);
+export function DataProvider({ url: initialUrl, children }: DataContextProps) {
+  const [data, setData] = useState<{ data: ContentBlock[] } | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
   const [url, setInternalUrl] = useState<string | null>(initialUrl);
@@ -44,13 +41,11 @@ export function DataProvider({
           },
           body: JSON.stringify({ url: url }),
         });
-        console.log(response)
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const jsonData: ContentBlock[] = await response.json();
+        const jsonData: { data: ContentBlock[] } = await response.json();
         setData(jsonData);
-        console.log(jsonData)
       } catch (err) {
         if (err instanceof Error) {
           setError(err);

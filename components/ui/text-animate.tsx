@@ -106,7 +106,7 @@ const defaultItemAnimationVariants: Record<
     container: defaultContainerVariants,
     item: {
       hidden: { opacity: 0, y: 20 },
-      show: (delay: number) => ({
+      show: () => ({
         opacity: 1,
         y: 0,
         transition: {
@@ -143,7 +143,7 @@ const defaultItemAnimationVariants: Record<
     container: defaultContainerVariants,
     item: {
       hidden: { opacity: 0, filter: "blur(10px)", y: 20 },
-      show: (delay: number) => ({
+      show: () => ({
         opacity: 1,
         filter: "blur(0px)",
         y: 0,
@@ -169,7 +169,7 @@ const defaultItemAnimationVariants: Record<
     container: defaultContainerVariants,
     item: {
       hidden: { opacity: 0, filter: "blur(10px)", y: -20 },
-      show: (delay: number) => ({
+      show: () => ({
         opacity: 1,
         filter: "blur(0px)",
         y: 0,
@@ -308,8 +308,7 @@ export function TextAnimate({
   segmentClassName,
   as: Component = "p",
   startOnView = true,
-  once = false,
-  by = "",
+  by = "text",
   animation = "fadeIn",
   ...props
 }: TextAnimateProps) {

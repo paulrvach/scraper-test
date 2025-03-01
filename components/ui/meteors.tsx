@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import React, { memo, useMemo } from "react";
+import React, { memo } from "react";
 
 const Meteors = memo(
   ({ number, className }: { number?: number; className?: string }) => {

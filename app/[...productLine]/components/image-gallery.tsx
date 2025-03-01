@@ -1,9 +1,9 @@
 import React from "react";
 import { PropsDataDistributor } from "./data-distributor";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { ImageSwiper } from "@/components/ui/image-swiper";
 const ImageGallery = ({
-  data: { headings, src, images, items, text },
+  data: { images, text },
 }: PropsDataDistributor) => {
   return (
     <Card className="max-w-[400px]">

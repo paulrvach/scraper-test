@@ -3,20 +3,18 @@ import { PropsDataDistributor } from "./data-distributor";
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import Image from "next/image";
 const ImageWithText = ({
-  data: { headings, src, images, items, text },
+  data: { headings, images, text },
 }: PropsDataDistributor) => {
   return (
     <div className="contents">
       <Card className="">
         <CardHeader className="flex shrink">
-          <CardTitle>{headings?.h4! || text}</CardTitle>
+          <CardTitle>{headings?.h4 || text}</CardTitle>
         </CardHeader>
         <CardContent className="w-sm">
           {images ? (

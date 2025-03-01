@@ -1,11 +1,10 @@
 import React from "react";
 import { PropsDataDistributor } from "./data-distributor";
 import { AnimatedShinyText } from "@/components/ui/animated-shiny-text";
-import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 const ListComponent = ({
-  data: { headings, src, images, items },
+  data: { headings, images, items },
 }: PropsDataDistributor) => {
   console.log(headings)
 
